@@ -1,5 +1,7 @@
 # see https://github.com/golangci/golangci-lint/blob/master/.golangci.reference.yml
 
+version: "2"
+
 run:
   tests: true
   modules-download-mode: readonly
