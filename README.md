@@ -41,13 +41,10 @@ Personal Go library monorepo. Small, independently versioned modules for common 
 
 ## CLI tools
 
-| Command       | Description                                           |
-| ------------- | ----------------------------------------------------- |
-| `t0runner`    | YAML task runner (powers `./run`)                     |
-| `t0changelog` | Generate changelog sections from conventional commits |
-| `t0copyright` | Check/add copyright headers to source files           |
-| `t0filer`     | Batch file symlinks, deletes, and backups             |
-| `gengowork`   | Regenerate `go.work` from module layout               |
+| Command                 | Description                                    |
+| ----------------------- | ---------------------------------------------- |
+| `cmd/copyright`         | Check/add copyright headers (Go, stdlib only)  |
+| `sh/generate-gowork.sh` | Regenerate `go.work` from module layout (bash) |
 
 ## Quick start
 

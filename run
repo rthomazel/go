@@ -1,7 +1,74 @@
 #! /usr/bin/env bash
 
-if [[ "$1" =~ ci ]]; then
-  BASH_ENV=./sh/lib/lib.sh ./sh/lib/ci.sh "$@"
-else
-  .build/t0runner "$@"
-fi
+set -euo pipefail
+shopt -s globstar
+trap 'echo fatal: $0:$LINENO >&2' ERR
+
+# AGENTS: run commands directly, you cannot execute this file. if making changes to this file, run chmod u+x on it.
+cmd="${1:-help}"
+
+case "$cmd" in
+# -- build a module: ./run build <module>
+build)
+  go tool godotenv -f .env go build "./${2:?usage: ./run build <module>}/..."
+  ;;
+# -- install a module binary: ./run install <module>
+install)
+  go tool godotenv -f .env go install "./${2:?usage: ./run install <module>}/..."
+  ;;
+# -- run tests for a module: ./run test <module>
+test)
+  go tool godotenv -f .env go test "./${2:?usage: ./run test <module>}/..."
+  ;;
+# -- run tests for all modules
+test:all)
+  go tool godotenv -f .env go test ./...
+  for mod in clock cmd httpmisc hue identifier jsonutil logging misc; do
+    (cd "$mod" && go tool godotenv -f ../.env go test ./...)
+  done
+  ;;
+# -- run golangci-lint on a module: ./run lint <module>
+lint)
+  cd "${2:?usage: ./run lint <module>}" && go tool golangci-lint run ./...
+  ;;
+# -- run gofumpt formatter on a module: ./run format <module>
+format)
+  go tool gofumpt -l -w "${2:?usage: ./run format <module>}"
+  ;;
+# -- run gofumpt on all modules
+format:all)
+  for mod in . clock cmd httpmisc hue identifier jsonutil logging misc; do
+    go tool gofumpt -l -w "$mod"
+  done
+  ;;
+# -- regenerate go.work from module layout
+generate:gowork)
+  bash sh/generate-gowork.sh
+  ;;
+# -- scaffold a new library module
+new:module)
+  BASH_ENV=./sh/lib/lib.sh ./sh/new_module.sh
+  ;;
+# -- scaffold a new CLI command
+new:command)
+  BASH_ENV=./sh/lib/lib.sh ./sh/new_command.sh
+  ;;
+# -- add/fix copyright headers in Go files
+copyright:go)
+  go run cmd/copyright/main.go -f -c '// ' '*.go'
+  ;;
+# -- add/fix copyright headers in shell scripts
+copyright:sh)
+  go run cmd/copyright/main.go -f -s -c '# ' '*.sh'
+  ;;
+# -- verify/install tooling
+setup)
+  ./bin/setup
+  ;;
+help | *)
+  echo "Usage: ./run <command>"
+  echo ""
+  echo "Commands:"
+  awk '/^# -- /{desc=substr($0, index($0,"-- ")+3)} /\)$/ && desc{cmd=$0; gsub(/[[:space:]()| *]/, "", cmd); printf "  %-22s %s\n", cmd, desc; desc=""}' "$0"
+  ;;
+esac

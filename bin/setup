@@ -1,0 +1,51 @@
+#! /usr/bin/env bash
+
+set -euo pipefail
+shopt -s globstar
+trap 'echo error: line $LINENO >&2' ERR
+# AGENTS: run bin/setup at session start if not already done — it is idempotent.
+
+SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+
+# GITHUB_TOKEN present means we're running as a cloud agent (CI or Claude Code web).
+is_cloud_agent() {
+  [[ -n "${GITHUB_TOKEN:-}" ]]
+}
+
+# Install mise if missing, then install Go+Node from .tool-versions and activate shims.
+install_toolchain() {
+  if ! command -v mise &>/dev/null; then
+    curl https://mise.run | sh
+    export PATH="$HOME/.local/bin:$PATH"
+  fi
+  mise install
+  eval "$(mise activate bash)"
+}
+
+# storage.googleapis.com is unreachable in the Claude Code cloud environment (DNS issue,
+# April 2026). Detect and reroute module downloads through goproxy.io.
+fix_goproxy_if_needed() {
+  if ! curl -s --max-time 3 https://storage.googleapis.com > /dev/null 2>&1; then
+    export GOPROXY="https://goproxy.io,direct"
+    export GONOSUMDB="*"
+    echo "info: storage.googleapis.com unreachable, using GOPROXY=goproxy.io" >&2
+  fi
+}
+
+if is_cloud_agent; then
+  install_toolchain
+  fix_goproxy_if_needed
+
+  if ! command -v prettier &>/dev/null; then
+    npm install -g prettier 2>/dev/null || echo "npm: prettier install failed" >&2
+  fi
+else
+  echo "info: run 'mise install' to install Go and Node (see .tool-versions)" >&2
+  echo "info: run 'npm install -g prettier' to install prettier" >&2
+fi
+
+go mod download
+go install tool
+
+chmod u+x "$SCRIPT_DIR/../run" "$SCRIPT_DIR/setup" 2>/dev/null || true
+echo "setup complete"

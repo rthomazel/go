@@ -2,65 +2,61 @@
 
 ## Prerequisites
 
-- **Go 1.26.1+** (managed via [mise](https://mise.jdx.dev/))
-- **gofumpt** — formatter
-- **golangci-lint** — linter
-- **prettier** — YAML/JSON formatter
-- **Node.js** — required for prettier and commitlint
-- **bash** 4+
+- **Go 1.26.1+** (managed via [mise](https://mise.jdx.dev/) + `.tool-versions`)
+- **Node.js** — required for prettier (YAML/JSON formatting)
+- **prettier** — `npm install -g prettier`
 
-Run setup to verify all tools are present:
+All Go tools (golangci-lint, gofumpt, godotenv) are declared in `go.mod` and installed via:
 
 ```bash
-./run setup
+go install tool
 ```
 
-This checks for required binaries and prints install commands for anything missing.
+Run setup to handle all of the above:
+
+```bash
+./bin/setup      # or: ./run setup
+```
+
+This is idempotent and safe to re-run. In cloud/CI environments it auto-detects via `GITHUB_TOKEN` and installs the full toolchain.
 
 ## Common tasks
 
 ```bash
-# Build a module
-./run build logging
+./run help            # list all commands
 
-# Run tests for a module
-./run test misc
+./run build logging   # build a module
+./run install cmd     # build and install a module binary
+./run test misc       # run tests for a module
+./run test:all        # run tests for all modules
 
-# Lint a module
-./run lint cmd
+./run lint cmd        # lint a module
+./run format httpmisc # format a module
+./run format:all      # format all modules
 
-# Format a module
-./run format httpmisc
+./run copyright:go    # fix copyright headers in .go files
+./run copyright:sh    # fix copyright headers in .sh files
 
-# Format all YAML/JSON configs
-./run format-configs
-
-# Fix copyright headers
-./run copyright-fix-go
-./run copyright-fix-sh
-
-# Generate mock files
-./run generate-mocks
-
-# Regenerate go.work (after adding/removing modules)
-./run generate-go-work
+./run generate:gowork # regenerate go.work (after adding/removing modules)
+./run new:module      # scaffold a new library module
+./run new:command     # scaffold a new CLI command
 ```
 
 ## Adding a new library module
 
 ```bash
-./run new-module
+./run new:module
 ```
 
 The script (`sh/new_module.sh`) scaffolds the module directory, `go.mod`, and initial source files, then regenerates `go.work`.
 
-## Adding a new CLI command
+## Adding a new CLI command (gengowork-style)
 
 ```bash
-./run new-command
+./run new:command
 ```
 
-The script (`sh/new_command.sh`) copies the `cmd/template` directory, renames it, and wires it into the workspace.
+The script (`sh/new_command.sh`) copies the `cmd/template` directory and wires it into the workspace.
 
 ## Module versioning & releases
 
@@ -68,34 +64,31 @@ Each sub-module is versioned independently using Git tags in the form `<module>/
 
 The release workflow:
 1. Commits follow [Conventional Commits](https://www.conventionalcommits.org/) format
-2. `t0changelog` generates the changelog section from `git log` since the last tag
-3. `t0copyright` ensures all files have the BSD-3-Clause header
-4. Tags are pushed; GitHub Actions handles the release PR and publishes
+2. Tags are pushed; GitHub Actions handles the release PR and publishes
 
 ## Code style
 
-- **Formatting:** `gofumpt` (stricter than `gofmt`)
-- **Linting:** `golangci-lint` — config in `.golangci.yml` (if present) or defaults
-- **Error wrapping:** use `misc.Wrap`, `misc.Wrapf`, `misc.Wrapfl` (never `fmt.Errorf` with `%w` directly)
-- **Logging:** always pass `*logging.Logger` via context; retrieve with `logging.FromContext(ctx)`
-- **Context pattern:** `clock`, `identifier`, and `logging` all use the same store-in-context / retrieve-from-context pattern
-- **Generics:** preferred over `any`-typed helpers wherever the type is constrained
+- **Formatting:** `gofumpt` (stricter than `gofmt`) — run via `./run format <module>`
+- **Linting:** `golangci-lint` — run via `./run lint <module>`
+- **Error wrapping:** use `misc.Wrap`, `misc.Wrapf`, `misc.Wrapfl`
+- **Logging:** pass `*logging.Logger` via context; retrieve with `logging.FromContext(ctx)`
+- **Context pattern:** `clock`, `identifier`, and `logging` all use store-in-context / retrieve-from-context
 - **No wiki:** documentation lives in this `doc/` folder and inline code comments
 
 ## Environment variables
 
-Create a `.env` file at the repo root (gitignored) to set defaults:
+Create a `.env` file at the repo root (gitignored) to set local defaults:
 
 ```bash
 T0_COLOR=true
 T0_LOGLEVEL=1   # Debug
 ```
 
-All commands automatically load `.env` via `misc.DotEnv` on startup.
+All commands load `.env` automatically via `godotenv` or `misc.DotEnv`.
 
 ## sh/ submodule
 
-`sh/lib` is a git submodule containing shared bash utilities (`lib.sh`, `ci.sh`, helper scripts). It is sourced via `BASH_ENV=./sh/lib/lib.sh` in most runner tasks. After a fresh clone:
+`sh/lib` is a git submodule containing shared bash utilities (`lib.sh`, `ci.sh`, helper scripts). After a fresh clone:
 
 ```bash
 git submodule update --init
