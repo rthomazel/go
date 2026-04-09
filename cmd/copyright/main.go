@@ -97,7 +97,7 @@ func loadHeader() (string, error) {
 	}
 
 	for _, p := range candidates {
-		data, err := os.ReadFile(p)
+		data, err := os.ReadFile(p) //nolint:gosec // intentional: path is controlled
 		if err == nil {
 			return strings.TrimRight(string(data), "\n"), nil
 		}
@@ -107,22 +107,22 @@ func loadHeader() (string, error) {
 }
 
 func commentHeader(header, token string) string {
-	var b strings.Builder
+	var builder strings.Builder
 
 	for line := range strings.SplitSeq(header, "\n") {
-		b.WriteString(token)
-		b.WriteString(line)
-		b.WriteByte('\n')
+		builder.WriteString(token)
+		builder.WriteString(line)
+		builder.WriteByte('\n')
 	}
 
-	return b.String()
+	return builder.String()
 }
 
 func findMissing(globs []string, ignore *regexp.Regexp) ([]string, error) {
 	var missing []string
 
-	for _, g := range globs {
-		matches, err := filepath.Glob(g)
+	for _, glob := range globs {
+		matches, err := filepath.Glob(glob)
 		if err != nil {
 			return nil, fmt.Errorf("glob %q: %w", g, err)
 		}
@@ -142,7 +142,7 @@ func findMissing(globs []string, ignore *regexp.Regexp) ([]string, error) {
 
 			ok, err := hasHeader(path)
 			if err != nil {
-				return nil, err
+				return nil, fmt.Errorf("checking %s: %w", path, err)
 			}
 
 			if !ok {
@@ -159,16 +159,17 @@ func walkGlob(g string) ([]string, error) {
 	base := filepath.Base(g)
 	var out []string
 
-	err := filepath.WalkDir(".", func(path string, d os.DirEntry, err error) error {
+	var walkErr error
+	err := filepath.WalkDir(".", func(path string, entry os.DirEntry, err error) error {
 		if err != nil {
 			return err
 		}
 
-		if d.IsDir() && strings.HasPrefix(d.Name(), ".") {
+		if entry.IsDir() && strings.HasPrefix(entry.Name(), ".") {
 			return filepath.SkipDir
 		}
 
-		matched, err := filepath.Match(base, d.Name())
+		matched, err := filepath.Match(base, entry.Name())
 		if err != nil {
 			return err
 		}
@@ -180,15 +181,18 @@ func walkGlob(g string) ([]string, error) {
 		return nil
 	})
 
-	return out, err
+	if err != nil {
+		return nil, fmt.Errorf("walking directory: %w", err)
+	}
+	return out, nil
 }
 
 func hasHeader(path string) (bool, error) {
-	f, err := os.Open(path)
+	f, err := os.Open(path) //nolint:gosec // intentional: path from find
 	if err != nil {
-		return false, err
+		return false, fmt.Errorf("opening %s: %w", path, err)
 	}
-	defer f.Close()
+	defer func() { _ = f.Close() }()
 
 	scanner := bufio.NewScanner(f)
 	for range 10 {
@@ -201,13 +205,16 @@ func hasHeader(path string) (bool, error) {
 		}
 	}
 
-	return false, scanner.Err()
+	if scanErr := scanner.Err(); scanErr != nil {
+		return false, fmt.Errorf("scanning %s: %w", path, scanErr)
+	}
+	return false, nil
 }
 
 func fixFile(path, header string, shebang bool) error {
-	data, err := os.ReadFile(path)
+	data, err := os.ReadFile(path) //nolint:gosec // intentional: path from find
 	if err != nil {
-		return err
+		return fmt.Errorf("reading %s: %w", path, err)
 	}
 
 	var newContent string
@@ -215,7 +222,7 @@ func fixFile(path, header string, shebang bool) error {
 	if shebang {
 		firstNL := strings.Index(string(data), "\n")
 		if firstNL == -1 {
-			return fmt.Errorf("no newline found (cannot detect shebang line)")
+			return errors.New("no newline found (cannot detect shebang line)")
 		}
 
 		newContent = string(data[:firstNL+1]) + header + "\n" + string(data[firstNL+1:])
@@ -223,5 +230,5 @@ func fixFile(path, header string, shebang bool) error {
 		newContent = header + "\n" + string(data)
 	}
 
-	return os.WriteFile(path, []byte(newContent), 0)
+	return os.WriteFile(path, []byte(newContent), 0) //nolint:gosec // intentional: path from find
 }

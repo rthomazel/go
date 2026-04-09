@@ -1,11 +1,11 @@
-with-expecter: True
+template: testify
 inpackage: True
 dir: "{{.InterfaceDir}}"
-mockname: "Mock{{.InterfaceName}}"
-outpkg: "{{.PackageName}}"
+structname: "Mock{{.InterfaceName}}"
+pkgname: "{{.SrcPackageName}}"
 filename: "mock_{{.InterfaceName | snakecase}}.go"
-include-regex: ".*"
-exclude-regex: "^lookupEnv$"
+include-interface-regex: ".*"
+exclude-interface-regex: "^lookupEnv$"
 packages:
   github.com/rthomazel/go/httpmisc:
   github.com/rthomazel/go/misc:

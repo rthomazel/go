@@ -18,10 +18,10 @@ func TestMaxSizeWrite(t *testing.T) {
 	writer2 := httpmisc.NewMockwriterFlusher(t)
 	writer3 := httpmisc.NewMockwriterFlusher(t)
 
-	writer1.Expect().Write([]uint8{}).Return(5, nil).Once()
-	writer2.Expect().Write([]uint8{}).Return(10, nil).Once()
-	writer3.Expect().Write([]uint8{}).Return(20, nil).Once()
-	writer3.Expect().Flush()
+	writer1.EXPECT().Write([]uint8{}).Return(5, nil).Once()
+	writer2.EXPECT().Write([]uint8{}).Return(10, nil).Once()
+	writer3.EXPECT().Write([]uint8{}).Return(20, nil).Once()
+	writer3.EXPECT().Flush()
 
 	tests := []struct {
 		maxSize *httpmisc.MaxSize

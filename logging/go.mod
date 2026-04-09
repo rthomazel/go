@@ -3,8 +3,8 @@ module github.com/rthomazel/go/logging
 go 1.26.1
 
 require (
-	github.com/stretchr/testify v1.11.1
 	github.com/rthomazel/go/hue v0.2.0
+	github.com/stretchr/testify v1.11.1
 	golang.org/x/sync v0.20.0
 )
 
@@ -13,3 +13,5 @@ require (
 	github.com/pmezard/go-difflib v1.0.0 // indirect
 	gopkg.in/yaml.v3 v3.0.1 // indirect
 )
+
+replace github.com/rthomazel/go/hue => ../hue

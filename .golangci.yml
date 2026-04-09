@@ -1,4 +1,4 @@
-# see https://github.com/golangci/golangci-lint/blob/master/.golangci.reference.yml
+# see https://golangci-lint.run/jsonschema/golangci.jsonschema.json
 
 version: "2"
 
@@ -6,140 +6,135 @@ run:
   tests: true
   modules-download-mode: readonly
 
-linters:
+formatters:
   enable:
-    - nilerr
-    - govet
-    - gosec
-    - importas
-    - nilnil
-    - paralleltest
-    - tparallel
-    - gocritic
-    - gocyclo
-    - lll
-    - nolintlint
-    - staticcheck
-    - stylecheck
-    - testifylint
-    - unconvert
-    - unparam
-    - unused
+    - gofumpt
+  settings:
+    gofumpt:
+      extra-rules: true
+
+linters:
+  default: none
+  enable:
     - bodyclose
-    - intrange
     - contextcheck
     - errcheck
     - errchkjson
     - errname
     - exhaustive
+    - gocritic
+    - gocyclo
+    - gosec
+    - govet
+    - importas
+    - intrange
+    - lll
     - makezero
     - mirror
+    - nilerr
+    - nilnil
     - noctx
+    - nolintlint
+    - paralleltest
     - perfsprint
     - sloglint
-    - tenv
+    - staticcheck
+    - testifylint
     - thelper
+    - tparallel
+    - unconvert
+    - unparam
+    - unused
     - varnamelen
     - wastedassign
     - wrapcheck
+    - whitespace
 
-  disable:
-    - gofmt # using gofumpt
+  settings:
+    govet:
+      enable-all: true
 
-  presets:
-    - bugs
-    - comment
-    - complexity
-    - error
-    - format
-    - import
-    - metalinter
-    - module
-    - performance
-    - sql
-    - style
-    - test
-    - unused
-  fast: true
+    gosec:
+      excludes:
+        - G101 # Look for hard coded credentials, this linter is dumb
 
-linters-settings:
-  govet:
-    enable-all: true
+    importas:
+      no-unaliased: true
 
-  gosec:
-    exclude-generated: true
-    excludes:
-      - G101 # Look for hard coded credentials, this linter is dumb
+    gocritic:
+      enabled-tags:
+        - diagnostic
+        - experimental
+        - opinionated
+        - performance
+        - style
+      disabled-checks:
+        - dupImport # https://github.com/go-critic/go-critic/issues/845
+        - ifElseChain
+        - octalLiteral
+        - whyNoLint
 
-  importas:
-    no-unaliased: true
-    alias:
-      - pkg: example.dev/serving/pkg/apis/v1
-        alias: examplev1
+    gocyclo:
+      min-complexity: 15
 
-  paralleltest:
-    ignore-missing: false
-    ignore-missing-subtests: true
+    lll:
+      line-length: 140
 
-  gocritic:
-    enabled-tags:
-      - diagnostic
-      - experimental
-      - opinionated
-      - performance
-      - style
-    disabled-checks:
-      - dupImport # https://github.com/go-critic/go-critic/issues/845
-      - ifElseChain
-      - octalLiteral
-      - whyNoLint
+    nolintlint:
+      allow-unused: false
+      require-explanation: true
+      require-specific: true
 
-  gocyclo:
-    min-complexity: 15
+    exhaustive:
+      check:
+        - switch
+        - map
 
-  lll:
-    line-length: 140
+    depguard:
+      rules:
+        main:
+          list-mode: lax
+          deny:
+            - pkg: "github.com/example/example"
+              desc: cannot be imported
 
-  nolintlint:
-    allow-unused: false
-    require-explanation: true
-    require-specific: true
+    mnd:
+      ignored-functions:
+        - '^misc\.Seconds'
+        - '^misc\.Minutes'
+        - '^misc\.Hours'
+        - '^misc\.Days'
+        - '^(wg|wait|waitGroup)\.Add'
+        - "^make"
+        - "^os.OpenFile"
 
-  exhaustive:
-    check:
-      - switch
-      - map
+    funlen:
+      ignore-comments: true
 
-  depguard:
-    rules:
-      main:
-        list-mode: lax
-        deny:
-          - pkg: "github.com/example/example"
-            desc: cannot be imported
+    varnamelen:
+      ignore-decls:
+        - i int
+        - i uint8
+        - t testing.T
+        - b testing.B
+        - e error
+        - T any
+        - m map[string]int
+      ignore-type-assert-ok: true
+      ignore-map-index-ok: true
+      ignore-chan-recv-ok: true
 
-  mnd:
-    ignored-functions:
-      - '^misc\.Seconds'
-      - '^misc\.Minutes'
-      - '^misc\.Hours'
-      - '^misc\.Days'
-      - '^(wg|wait|waitGroup)\.Add'
-      - "^make"
-      - "^os.OpenFile"
+    wrapcheck:
+      ignore-package-globs:
+        - golang.org/x/sync/*
+        - github.com/rthomazel/go/misc*
 
-  funlen:
-    ignore-comments: true
+    staticcheck:
+      checks:
+        - all
 
-  varnamelen:
-    ignore-decls:
-      - i int
-      - i uint8
-    ignore-type-assert-ok: true
-    ignore-map-index-ok: true
-    ignore-chan-recv-ok: true
-
-  wrapcheck:
-    ignorePackageGlobs:
-      - golang.org/x/sync/*
-      - github.com/rthomazel/go/misc*
+    whitespace:
+      # Enforces newlines (or comments) after every multi-line if statement.
+      multi-if: true
+      # Enforces newlines (or comments) after every multi-line function signature.
+      multi-func: true

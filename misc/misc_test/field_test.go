@@ -24,7 +24,7 @@ func TestFieldUpdater_UpdateField(t *testing.T) {
 
 	cfg := &config{}
 	updater := misc.NewMockFieldUpdater(t)
-	updater.Expect().UpdateField(mock.AnythingOfType("*reflect.StructField"), mock.AnythingOfType("reflect.Value")).
+	updater.EXPECT().UpdateField(mock.AnythingOfType("*reflect.StructField"), mock.AnythingOfType("reflect.Value")).
 		Return(nil).
 		Twice()
 
