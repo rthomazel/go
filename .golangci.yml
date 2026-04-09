@@ -16,39 +16,83 @@ formatters:
 linters:
   default: none
   enable:
+    - asciicheck
+    - bidichk
     - bodyclose
+    - canonicalheader
     - contextcheck
+    - copyloopvar
+    - cyclop
+    - decorder
+    - dogsled
+    - dupl
+    - dupword
+    - embeddedstructfieldcheck
+    - err113
     - errcheck
-    - errchkjson
     - errname
+    - errorlint
     - exhaustive
+    - exptostd
+    - fatcontext
+    - funcorder
+    - ginkgolinter
+    - gocheckcompilerdirectives
+    - gocognit
     - gocritic
     - gocyclo
+    - godoclint
+    - godot
+    - godox
+    - goheader
+    - gomoddirectives
+    - goprintffuncname
     - gosec
     - govet
+    - grouper
+    - iface
     - importas
+    - inamedparam
+    - ineffassign
+    - interfacebloat
     - intrange
+    - iotamixing
     - lll
-    - makezero
+    - maintidx
     - mirror
+    - misspell
+    - modernize
+    - nakedret
+    - nestif
     - nilerr
     - nilnil
+    - nlreturn
     - noctx
     - nolintlint
+    - nosprintfhostport
     - paralleltest
     - perfsprint
+    - predeclared
+    - protogetter
     - sloglint
     - staticcheck
+    - tagalign
+    - testableexamples
     - testifylint
+    - testpackage
     - thelper
     - tparallel
     - unconvert
     - unparam
+    - unqueryvet
     - unused
+    - usestdlibvars
+    - usetesting
     - varnamelen
     - wastedassign
     - wrapcheck
-    - whitespace
+    - wsl_v5
+    # - depguard
 
   settings:
     govet:
@@ -133,8 +177,34 @@ linters:
       checks:
         - all
 
-    whitespace:
-      # Enforces newlines (or comments) after every multi-line if statement.
-      multi-if: true
-      # Enforces newlines (or comments) after every multi-line function signature.
-      multi-func: true
+    wsl_v5:
+      allow-first-in-block: true
+      allow-whole-block: false
+      branch-max-lines: 2
+      case-max-lines: 0
+      default: "none" # Can be `all`, `none`, `default` or empty
+      enable:
+        - append
+        - assign
+        - branch
+        - decl
+        - defer
+        - err
+        - expr
+        - for
+        - go
+        - if
+        - inc-dec
+        - label
+        - range
+        - return
+        - select
+        - send
+        - switch
+        - type-switch
+        - leading-whitespace
+        - trailing-whitespace
+        - after-block
+        - assign-expr
+      disable:
+        - assign-exclusive
