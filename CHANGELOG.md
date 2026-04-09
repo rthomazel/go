@@ -1,22 +1,39 @@
-# cmd/v0.3.0 *(2024-09-14)*
+# cmd/v0.3.0 _(2024-09-14)_
+
 ### [Diff with cmd/v0.2.0](https://github.com/tcodes0/go/compare/cmd/v0.3.0..cmd/v0.2.0)
-# clock/v0.2.0 *(2024-09-14)*
+
+# clock/v0.2.0 _(2024-09-14)_
+
 ### [Diff with clock/v0.1.4](https://github.com/tcodes0/go/compare/clock/v0.2.0..clock/v0.1.4)
-# httpmisc/v0.2.0 *(2024-09-14)*
+
+# httpmisc/v0.2.0 _(2024-09-14)_
+
 ### [Diff with httpmisc/v0.1.5](https://github.com/tcodes0/go/compare/httpmisc/v0.2.0..httpmisc/v0.1.5)
-# hue/v0.2.0 *(2024-09-14)*
+
+# hue/v0.2.0 _(2024-09-14)_
+
 ### [Diff with hue/v0.1.4](https://github.com/tcodes0/go/compare/hue/v0.2.0..hue/v0.1.4)
-# identifier/v0.2.0 *(2024-09-14)*
+
+# identifier/v0.2.0 _(2024-09-14)_
+
 ### [Diff with identifier/v0.1.4](https://github.com/tcodes0/go/compare/identifier/v0.2.0..identifier/v0.1.4)
-# jsonutil/v0.2.0 *(2024-09-14)*
+
+# jsonutil/v0.2.0 _(2024-09-14)_
+
 ### [Diff with jsonutil/v0.1.5](https://github.com/tcodes0/go/compare/jsonutil/v0.2.0..jsonutil/v0.1.5)
-# logging/v0.3.0 *(2024-09-14)*
+
+# logging/v0.3.0 _(2024-09-14)_
+
 ### [Diff with logging/v0.2.0](https://github.com/tcodes0/go/compare/logging/v0.3.0..logging/v0.2.0)
-# misc/v0.2.0 *(2024-09-14)*
+
+# misc/v0.2.0 _(2024-09-14)_
+
 ### [Diff with misc/v0.1.5](https://github.com/tcodes0/go/compare/misc/v0.2.0..misc/v0.1.5)
 
 ### PRs in this release: [#62](https://github.com/tcodes0/go/pull/62), [#63](https://github.com/tcodes0/go/pull/63), [#64](https://github.com/tcodes0/go/pull/64)
-## *Breaking Changes*
+
+## _Breaking Changes_
+
 - **cmd**: prefix commands with t0 ([69342288](https://github.com/tcodes0/go/commit/69342288124bb67965a8061a9db35751034202da))
 - - github.com/tcodes0/go/cmd/filer -> github.com/tcodes0/go/cmd/t0filer
 - - github.com/tcodes0/go/cmd/changelog -> github.com/tcodes0/go/cmd/t0changelog
@@ -28,9 +45,11 @@
 - **go**: bump to 1.23.1 ([48a2bbbf](https://github.com/tcodes0/go/commit/48a2bbbf2717fd9c47151a89d47edd2fb029d660))
 
 ## Features
+
 - **cmd/runner**: support dynamic config with -config flag ([4747a3a0](https://github.com/tcodes0/go/commit/4747a3a079b696143ce26c3d239bdeb26a90d241))
 
 ## Bug Fixes
+
 - **cmd**: double flagset help in most cases ([b13b3d4b](https://github.com/tcodes0/go/commit/b13b3d4bdfe510d879dfa8d4d65a3606c72fb4bd))
 - **cmd**: recover on main ([45e448d4](https://github.com/tcodes0/go/commit/45e448d40732caa00b581f8e6cd17522c688e2e5))
 - **cmd**: rename main dirs keep main.go on the top ([93cb83fb](https://github.com/tcodes0/go/commit/93cb83fb9e7d95db1f5d9949f2e67597d3c74bf8))
@@ -45,6 +64,7 @@
 - task config ([e8966e7e](https://github.com/tcodes0/go/commit/e8966e7e95c054852a44d38c7dd4558ea223a0c7))
 
 ## Improvements
+
 - **cmd/gengowork**: use passAway function on main ([f93b44e8](https://github.com/tcodes0/go/commit/f93b44e89417cd35ade09fe35ffcf0db5684bfd6))
 - **cmd/runner**: compose help msg, rename module to package ([78e74acc](https://github.com/tcodes0/go/commit/78e74acc8208ef9ad555e7a372339e385fde7acc))
 - **cmd/runner**: remove needs, tidy usage message ([936b15b0](https://github.com/tcodes0/go/commit/936b15b0c586b955dbaf3b178e49c6fa604a7292))
@@ -55,12 +75,15 @@
 - **setup.sh**: organize script, check for outdated go.mod go version ([a64e0a8c](https://github.com/tcodes0/go/commit/a64e0a8ca9c31cac891139e34b04f2b3da8b6627))
 
 ## Documentation
+
 - touch up some comments ([fd29415e](https://github.com/tcodes0/go/commit/fd29415e17334b7b8f62dc2b270293f187ad1e5c))
 
 ## Styling
+
 - **cmd/t0runner**: stderr output ([43c3d9be](https://github.com/tcodes0/go/commit/43c3d9be50297d535b83ac1b8459ea2c912a5064))
 
 #### Other
+
 - **cmd/runner**: docs and fix empty config flag handling ([ee74b912](https://github.com/tcodes0/go/commit/ee74b9123e6bd075027a1cd4730c49d459080c6e))
 - **cmd/runner**: minor corrections ([5a149557](https://github.com/tcodes0/go/commit/5a1495570c71ee8c6b81f247ea40eca183584d61))
 - **cmd/t0runner**: recover on main ([a590c720](https://github.com/tcodes0/go/commit/a590c72011481bcade56bd0f3ec98e61238b3287))
@@ -80,18 +103,24 @@
 - cmd/t0runner ignore trailing slash on package names ([e0350cb7](https://github.com/tcodes0/go/commit/e0350cb76fe8b0a07f698c3b1683756d39b71dda))
 - fix commitlint workflow install ([03f1f6c3](https://github.com/tcodes0/go/commit/03f1f6c3f0a77e78bef28dc1d1ee14f722bd1ef9))
 
-# cmd/v0.2.0 *(2024-09-06)*
+# cmd/v0.2.0 _(2024-09-06)_
+
 ### [Diff with cmd/v0.1.5](https://github.com/tcodes0/go/compare/cmd/v0.2.0..cmd/v0.1.5)
-# logging/v0.2.0 *(2024-09-06)*
+
+# logging/v0.2.0 _(2024-09-06)_
+
 ### [Diff with logging/v0.1.5](https://github.com/tcodes0/go/compare/logging/v0.2.0..logging/v0.1.5)
 
 ### PRs in this release: [#49](https://github.com/tcodes0/go/pull/49), [#50](https://github.com/tcodes0/go/pull/50), [#51](https://github.com/tcodes0/go/pull/51), [#52](https://github.com/tcodes0/go/pull/52), [#53](https://github.com/tcodes0/go/pull/53), [#54](https://github.com/tcodes0/go/pull/54), [#55](https://github.com/tcodes0/go/pull/55), [#56](https://github.com/tcodes0/go/pull/56), [#57](https://github.com/tcodes0/go/pull/57), [#58](https://github.com/tcodes0/go/pull/58), [#60](https://github.com/tcodes0/go/pull/60)
-## *Breaking Changes*
+
+## _Breaking Changes_
+
 - **logging**: add new level param to logger.Stacktrace ([25a207c9](https://github.com/tcodes0/go/commit/25a207c991fab87ed0de0d4b64af2ddc03958901))
 - **cmd/changelog**: introduce new flags -url -title and -tagprefix to be useful in more repos ([c18f0ed0](https://github.com/tcodes0/go/commit/c18f0ed0386ff191d95449a7361add3a990a3b4f))
 - **cmd/changelog**: release multiple tags, rename -tagprefix to -tagprefixes ([a499c79e](https://github.com/tcodes0/go/commit/a499c79eb50347c5840fcdaf9a0421c6bc382f66))
 
 ## Features
+
 - **cmd**: update template with better recover function and -version ([f1faeb39](https://github.com/tcodes0/go/commit/f1faeb399e27c857b56d0384429aa01a2da9b19e))
 - **cmd/changelog**: add -version flag, improve recover function ([c36ecd64](https://github.com/tcodes0/go/commit/c36ecd645edab844d3904cbcbbace03ec77a7da4))
 - **cmd/changelog**: add h3 with all PRs in the release ([4f94692c](https://github.com/tcodes0/go/commit/4f94692ca904b914aa249d85ec56d0d9eb394061))
@@ -106,6 +135,7 @@
 - **workflows/release**: bump cmd configs version ([1bcf3b65](https://github.com/tcodes0/go/commit/1bcf3b650948d2d26678ec10f5b13cc780595308))
 
 ## Bug Fixes
+
 - **cmd/changelog**: collect breaking changes on body header ([ae63ffd7](https://github.com/tcodes0/go/commit/ae63ffd76c499258ac39ee3597629f4bc81392f6))
 - **cmd/changelog**: remove newline ([1e8d4474](https://github.com/tcodes0/go/commit/1e8d447438e8f20649a38ef457aa3b26d1e72611))
 - **cmd/changelog**: resolve race conditions ([8a3a8017](https://github.com/tcodes0/go/commit/8a3a8017ab16b80ad5a9723fcdea19a0ab0d83fc))
@@ -123,9 +153,11 @@
 - correct run wrapper not passing args to ci ([e994f3da](https://github.com/tcodes0/go/commit/e994f3da9c7e2eaceb9d314a49699de265ca6801))
 
 ## Performance
+
 - **cmd/changelog**: query in parallel ([6ea70c61](https://github.com/tcodes0/go/commit/6ea70c6166359a1e309aa79743e87bda7b62dff7))
 
 ## Improvements
+
 - **cmd/changelog**: remove title validation ([1db60c34](https://github.com/tcodes0/go/commit/1db60c343cc6f5c67c093775667b307735f61c89))
 - **cmd/changelog**: update title generation ([ae522260](https://github.com/tcodes0/go/commit/ae52226089c61a1ac62437f56cf9c25d6d0ac090))
 - **cmd/filer**: improve output when no changes occur ([e7baa159](https://github.com/tcodes0/go/commit/e7baa159fa922c0590b4539dca6113c67402b8b7))
@@ -135,7 +167,7 @@
 - **lib.sh**: use BASH_ENV to source lib.sh remove hardcoded source ([62fec87b](https://github.com/tcodes0/go/commit/62fec87b28ef4867dbf47bea327ce504a8e9e243))
 - **workflows**: organize script module_pr/test_pretty ([dafe3726](https://github.com/tcodes0/go/commit/dafe3726e50294ff0e3e12b4045631ea3c9caa0b))
 - **repo**: replace run and ci links with a wrapper script ([f2bdb62e](https://github.com/tcodes0/go/commit/f2bdb62ec412dceb41536b57d3d8ff386441040c))
-- **scripts**: refactor _sed to SED variable ([c14f83c8](https://github.com/tcodes0/go/commit/c14f83c86857f974b41a731ce20384e008a063d4))
+- **scripts**: refactor \_sed to SED variable ([c14f83c8](https://github.com/tcodes0/go/commit/c14f83c86857f974b41a731ce20384e008a063d4))
 - **scripts**: reference sh/lib for several scripts ([6f7a3477](https://github.com/tcodes0/go/commit/6f7a3477fb7b7ccdd7a58489b1f542a905bd12b8))
 - **scripts/tag**: organize script into functions ([45f27d01](https://github.com/tcodes0/go/commit/45f27d0171690ad904b93704d754e640da19d665))
 - **scripts/tag**: parse changelog and push tags for latest release ([6a2c0aa9](https://github.com/tcodes0/go/commit/6a2c0aa991a58a6516023c2b155792209ccae169))
@@ -143,6 +175,7 @@
 - **sh/new_module**: improve script organization ([490c1824](https://github.com/tcodes0/go/commit/490c1824c47b6616e6bbc3dbff5dadbedd4c1955))
 
 ## Documentation
+
 - **cmd**: use printf to print help messages ([28556c28](https://github.com/tcodes0/go/commit/28556c285e4c1ec2f51514ea9eca5f9dca02aa7f))
 - **cmd/changelog**: remove some references to module ([fecf61a3](https://github.com/tcodes0/go/commit/fecf61a3a8e969963eed0d580089778254d2772f))
 - **regex**: document complex regexes with links ([90b30e2a](https://github.com/tcodes0/go/commit/90b30e2af874bc5b7b6b0c7a5e1a1d31653b9886))
@@ -150,9 +183,11 @@
 - remove wiki from readme ([abe53eb4](https://github.com/tcodes0/go/commit/abe53eb4579aa6235b0be4f017aa74eb1a332b9d))
 
 ## Styling
+
 - **cmd/filer**: improve output ([39c37c69](https://github.com/tcodes0/go/commit/39c37c69beba0d1359d030fad46a1ef0a0753a8c))
 
 #### Other
+
 - **cmd/changelog**: list prs in ascending order ([0bdccb46](https://github.com/tcodes0/go/commit/0bdccb464c39744c1fc4c43f5d0420e89ef2eadb))
 - **cmd/changelog**: warn instead of error ([08a259fa](https://github.com/tcodes0/go/commit/08a259fae2e223920da0575aa8fd28bf768563b5))
 - **repo**: add sh submodule ([36927122](https://github.com/tcodes0/go/commit/3692712208ad0c0196f9b8446a7d59c01d0ba155))
@@ -177,37 +212,51 @@
 - lintfix ([8983e0f2](https://github.com/tcodes0/go/commit/8983e0f20074cd31173c313f86ff7390ff392196))
 - code review ([fc4b3754](https://github.com/tcodes0/go/commit/fc4b3754b7198345ca756acaea6b77fa8195d4bd))
 
-# httpmisc: v0.1.5 *(2024-08-05)*
+# httpmisc: v0.1.5 _(2024-08-05)_
+
 ### [Diff with httpmisc/v0.1.4](https://github.com/tcodes0/go/compare/httpmisc/v0.1.4..httpmisc/v0.1.5)
+
 ## Bug Fixes
+
 - update several go.mods ([5974cb8f](https://github.com/tcodes0/go/commit/5974cb8f96fb6da96a5b917c5f43203daee1b431))
 
-# jsonutil: v0.1.5 *(2024-08-05)*
+# jsonutil: v0.1.5 _(2024-08-05)_
+
 ### [Diff with jsonutil/v0.1.4](https://github.com/tcodes0/go/compare/jsonutil/v0.1.4..jsonutil/v0.1.5)
+
 ## Bug Fixes
+
 - update several go.mods ([5974cb8f](https://github.com/tcodes0/go/commit/5974cb8f96fb6da96a5b917c5f43203daee1b431))
 
-# logging: v0.1.5 *(2024-08-05)*
+# logging: v0.1.5 _(2024-08-05)_
+
 ### [Diff with logging/v0.1.4](https://github.com/tcodes0/go/compare/logging/v0.1.4..logging/v0.1.5)
+
 ## Bug Fixes
+
 - update several go.mods ([5974cb8f](https://github.com/tcodes0/go/commit/5974cb8f96fb6da96a5b917c5f43203daee1b431))
 
-# misc: v0.1.5 *(2024-08-05)*
+# misc: v0.1.5 _(2024-08-05)_
+
 ### [Diff with misc/v0.1.4](https://github.com/tcodes0/go/compare/misc/v0.1.4..misc/v0.1.5)
+
 ## Bug Fixes
+
 - update several go.mods ([5974cb8f](https://github.com/tcodes0/go/commit/5974cb8f96fb6da96a5b917c5f43203daee1b431))
 - **misc**: do not override env vars with dot env file ([7ba238f8](https://github.com/tcodes0/go/commit/7ba238f8d6cd68e5a42b39335d4386d4126f31cc))
 
-# cmd: v0.1.5 *(2024-08-05)*
+# cmd: v0.1.5 _(2024-08-05)_
 
 ### [Diff with cmd/v0.1.4](https://github.com/tcodes0/go/compare/cmd/v0.1.4..cmd/v0.1.5)
 
 ## Features
+
 - **scripts/ci**: handle workflow_dispatch events, improve ci flags ([f9063a76](https://github.com/tcodes0/go/commit/f9063a7680f3b3342b70d2828e64894d3d34e507))
 - **cmd/filer**: remove action flag, pass action as config head line ([c82a6681](https://github.com/tcodes0/go/commit/c82a6681099dcf852d02e8ca774e14a4b639dc5f))
 - **scripts**: include in setup checks for wiki clone locally and .env copy ([c82a6681](https://github.com/tcodes0/go/commit/c82a6681099dcf852d02e8ca774e14a4b639dc5f))
 
 ## Bug Fixes
+
 - **scripts/ci**: run spellcheck when .md files change ([c82a6681](https://github.com/tcodes0/go/commit/c82a6681099dcf852d02e8ca774e14a4b639dc5f))
 - **cmd/changelog**: correct diff link ([7ba238f8](https://github.com/tcodes0/go/commit/7ba238f8d6cd68e5a42b39335d4386d4126f31cc))
 - **spellcheck**: ignore go.sum files ([c82a6681](https://github.com/tcodes0/go/commit/c82a6681099dcf852d02e8ca774e14a4b639dc5f))
@@ -216,20 +265,24 @@
 - update several go.mods ([5974cb8f](https://github.com/tcodes0/go/commit/5974cb8f96fb6da96a5b917c5f43203daee1b431))
 
 ## Improvements
+
 - **scripts/ci**: improve shared lib functions ([f9063a76](https://github.com/tcodes0/go/commit/f9063a7680f3b3342b70d2828e64894d3d34e507))
 - **cmd/changelog**: improve readability ([7ba238f8](https://github.com/tcodes0/go/commit/7ba238f8d6cd68e5a42b39335d4386d4126f31cc))
 - **cmd/changelog**: parse merge commit bodies ([7ba238f8](https://github.com/tcodes0/go/commit/7ba238f8d6cd68e5a42b39335d4386d4126f31cc))
 - **cmd/changelog**: remove unnecessary logic since always run on main ([7ba238f8](https://github.com/tcodes0/go/commit/7ba238f8d6cd68e5a42b39335d4386d4126f31cc))
 
 ## Documentation
+
 - **scripts/ci**: improve usage message ([f9063a76](https://github.com/tcodes0/go/commit/f9063a7680f3b3342b70d2828e64894d3d34e507))
 - **cmd/runner**: improve comments ([5974cb8f](https://github.com/tcodes0/go/commit/5974cb8f96fb6da96a5b917c5f43203daee1b431))
 - **cmd/runner**: remove incorrect all module from usage ([5974cb8f](https://github.com/tcodes0/go/commit/5974cb8f96fb6da96a5b917c5f43203daee1b431))
 
 ## Tests
+
 - **cmd/changelog**: update tests ([7ba238f8](https://github.com/tcodes0/go/commit/7ba238f8d6cd68e5a42b39335d4386d4126f31cc))
 
 #### Other
+
 - **cmd/runner**: rename lint commands ([7ba238f8](https://github.com/tcodes0/go/commit/7ba238f8d6cd68e5a42b39335d4386d4126f31cc))
 - **workflows/release**: improve script ([5974cb8f](https://github.com/tcodes0/go/commit/5974cb8f96fb6da96a5b917c5f43203daee1b431))
 - accept cmd as a valid module ([7ba238f8](https://github.com/tcodes0/go/commit/7ba238f8d6cd68e5a42b39335d4386d4126f31cc))# all: v0.1.4 _(2024-08-02)_

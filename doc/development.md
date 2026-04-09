@@ -32,7 +32,7 @@ This is idempotent and safe to re-run. In cloud/CI environments it auto-detects 
 
 ./run lint cmd        # lint a module
 ./run format httpmisc # format a module
-./run format:all      # format all modules
+./run format          # format all go modules
 
 ./run copyright:go    # fix copyright headers in .go files
 ./run copyright:sh    # fix copyright headers in .sh files
@@ -63,6 +63,7 @@ The script (`sh/new_command.sh`) copies the `cmd/template` directory and wires i
 Each sub-module is versioned independently using Git tags in the form `<module>/v<semver>`, e.g. `logging/v0.3.0`.
 
 The release workflow:
+
 1. Commits follow [Conventional Commits](https://www.conventionalcommits.org/) format
 2. Tags are pushed; GitHub Actions handles the release PR and publishes
 

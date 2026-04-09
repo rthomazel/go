@@ -13,6 +13,7 @@ The `run` script at the repo root is the main entrypoint for local development.
 **Purpose:** Check and optionally fix copyright headers in source files. Stdlib only.
 
 **Usage:**
+
 ```
 copyright -c TOKEN [-f] [-s] [-i PATTERN] GLOB[,GLOB...]
 ```
@@ -46,7 +47,7 @@ go run cmd/copyright/main.go -f -s -c '# ' '*.sh'
 
 ---
 
-## sh/generate-gowork.sh
+## sh/generate_gowork.sh
 
 **Purpose:** Regenerate `go.work` from the current module layout. Reads the Go
 version from `go.mod`, finds all top-level sub-module directories, and writes

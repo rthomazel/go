@@ -31,19 +31,19 @@ test:all)
 lint)
   cd "${2:?usage: ./run lint <module>}" && go tool golangci-lint run ./...
   ;;
-# -- run gofumpt formatter on a module: ./run format <module>
+# -- run gofumpt formatter on all Go files
 format)
-  go tool gofumpt -l -w "${2:?usage: ./run format <module>}"
-  ;;
-# -- run gofumpt on all modules
-format:all)
   for mod in . clock cmd httpmisc hue identifier jsonutil logging misc; do
-    go tool gofumpt -l -w "$mod"
+    go tool gofumpt -l -w .
   done
+  ;;
+# -- run prettier on non-Go files: json, yaml, md
+format:others)
+  prettier --write .
   ;;
 # -- regenerate go.work from module layout
 generate:gowork)
-  bash sh/generate-gowork.sh
+  bash sh/generate_gowork.sh
   ;;
 # -- scaffold a new library module
 new:module)

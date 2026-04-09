@@ -85,19 +85,19 @@ Controlled at runtime via the `T0_LOGLEVEL` environment variable.
 
 A grab-bag of small, composable helpers. All generic where possible.
 
-| File | Exported API | Description |
-|------|-------------|-------------|
-| `err.go` | `Wrap`, `Wrapf`, `Wrapfl` | Error wrapping with message, format, or file:line |
-| `env.go` | `LookupEnv[T]`, `DotEnv` | Generic env var lookup with fallback; `.env` file loading |
-| `envtag.go` | `ApplyToFields` / `FieldUpdater` | Struct field iteration via reflection |
-| `slice.go` | `Find[T]`, `Uniq[T]` | Generic slice find and dedup |
-| `pick.go` | `PickValid[T]`, `Default[T]` | First non-nil/non-zero value; or default |
-| `copy.go` | `ToPtr[T]`, `Copy[T]`, `CopyPointed[T]` | Pointer/value copy helpers |
-| `nil.go` | `IsNil`, `IsZero` | Panic-safe nil/zero checks via reflection |
-| `merge.go` | `Merge[T]` | Struct partial update (base + partial, with ignore list) |
-| `field.go` | `ApplyToFields[T]` | Apply a `FieldUpdater` to all struct fields |
-| `signal.go` | `RoutineHandleStopSignal` | Block until SIGINT/SIGTERM/SIGHUP then call handler |
-| `time.go` | `Seconds`, `Minutes`, `Hours`, `Days` | `time.Duration` constructors from integers |
+| File        | Exported API                            | Description                                               |
+| ----------- | --------------------------------------- | --------------------------------------------------------- |
+| `err.go`    | `Wrap`, `Wrapf`, `Wrapfl`               | Error wrapping with message, format, or file:line         |
+| `env.go`    | `LookupEnv[T]`, `DotEnv`                | Generic env var lookup with fallback; `.env` file loading |
+| `envtag.go` | `ApplyToFields` / `FieldUpdater`        | Struct field iteration via reflection                     |
+| `slice.go`  | `Find[T]`, `Uniq[T]`                    | Generic slice find and dedup                              |
+| `pick.go`   | `PickValid[T]`, `Default[T]`            | First non-nil/non-zero value; or default                  |
+| `copy.go`   | `ToPtr[T]`, `Copy[T]`, `CopyPointed[T]` | Pointer/value copy helpers                                |
+| `nil.go`    | `IsNil`, `IsZero`                       | Panic-safe nil/zero checks via reflection                 |
+| `merge.go`  | `Merge[T]`                              | Struct partial update (base + partial, with ignore list)  |
+| `field.go`  | `ApplyToFields[T]`                      | Apply a `FieldUpdater` to all struct fields               |
+| `signal.go` | `RoutineHandleStopSignal`               | Block until SIGINT/SIGTERM/SIGHUP then call handler       |
+| `time.go`   | `Seconds`, `Minutes`, `Hours`, `Days`   | `time.Duration` constructors from integers                |
 
 ---
 
@@ -170,8 +170,8 @@ resp, data, err := c.Get(ctx, "/v1/resource", nil, nil)
 
 ### Server middleware / utilities
 
-| Symbol | Description |
-|--------|-------------|
-| `Recoverer(next)` | `http.Handler` middleware — catches panics, logs them, returns 500 |
-| `MaxSize` | `http.ResponseWriter` wrapper — auto-flushes after `Max` bytes written |
-| `Roundtrip` | `http.RoundTripper` with debug logging of request and response metadata |
+| Symbol            | Description                                                             |
+| ----------------- | ----------------------------------------------------------------------- |
+| `Recoverer(next)` | `http.Handler` middleware — catches panics, logs them, returns 500      |
+| `MaxSize`         | `http.ResponseWriter` wrapper — auto-flushes after `Max` bytes written  |
+| `Roundtrip`       | `http.RoundTripper` with debug logging of request and response metadata |

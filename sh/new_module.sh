@@ -27,7 +27,7 @@ create a new module called pizza
 EOF
 }
 
-init() {
+go_mod_init() {
   local name="$1" changed_files_entry="$1" module="github.com/tcodes0/go/$1" go_ver
 
   read -r _ _ go_ver _ < <(go version)
@@ -73,5 +73,5 @@ if requested_help "$*" || [ ! "${1:-}" ]; then
   exit 1
 fi
 
-init "$1"
+go_mod_init "$1"
 cleanup

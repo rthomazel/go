@@ -44,7 +44,7 @@ Personal Go library monorepo. Small, independently versioned modules for common 
 | Command                 | Description                                    |
 | ----------------------- | ---------------------------------------------- |
 | `cmd/copyright`         | Check/add copyright headers (Go, stdlib only)  |
-| `sh/generate-gowork.sh` | Regenerate `go.work` from module layout (bash) |
+| `sh/generate_gowork.sh` | Regenerate `go.work` from module layout (bash) |
 
 ## Quick start
 

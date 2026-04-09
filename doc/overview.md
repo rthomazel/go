@@ -2,7 +2,7 @@
 
 `github.com/tcodes0/go` is a personal Go library monorepo by Raphael Thomazella (tcodes0). It contains a collection of small, focused, independently-versioned Go modules that address common infrastructure concerns: logging, HTTP helpers, time abstractions, error wrapping, JSON utilities, terminal colors, and ID generation.
 
-The project also ships two small tools: `cmd/copyright` (a Go command, stdlib only) and `sh/generate-gowork.sh` (bash).
+The project also ships two small tools: `cmd/copyright` (a Go command, stdlib only) and `sh/generate_gowork.sh` (bash).
 
 ## Repository layout
 
@@ -50,9 +50,9 @@ cmd   (no internal deps)
 
 ## Environment variables
 
-| Variable | Default | Description |
-|----------|---------|-------------|
-| `T0_COLOR` | `false` | Enable ANSI color in CLI output |
+| Variable      | Default    | Description                                             |
+| ------------- | ---------- | ------------------------------------------------------- |
+| `T0_COLOR`    | `false`    | Enable ANSI color in CLI output                         |
 | `T0_LOGLEVEL` | `2` (Info) | Log level: 1=Debug 2=Info 3=Warn 4=Error 5=Fatal 6=None |
 
 These can be set in a `.env` file at the repo root (parsed by `misc.DotEnv` and `godotenv`).
