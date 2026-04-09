@@ -9,7 +9,7 @@ import (
 	"encoding/json"
 	"io"
 
-	"github.com/tcodes0/go/misc"
+	"github.com/rthomazel/go/misc"
 )
 
 // unmarshals a reader to a pointer; does not close the reader.

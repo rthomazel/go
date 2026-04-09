@@ -1,6 +1,6 @@
 # Project Overview
 
-`github.com/tcodes0/go` is a personal Go library monorepo by Raphael Thomazella (tcodes0). It contains a collection of small, focused, independently-versioned Go modules that address common infrastructure concerns: logging, HTTP helpers, time abstractions, error wrapping, JSON utilities, terminal colors, and ID generation.
+`github.com/rthomazel/go` is a personal Go library monorepo by Raphael Thomazella (rthomazel). It contains a collection of small, focused, independently-versioned Go modules that address common infrastructure concerns: logging, HTTP helpers, time abstractions, error wrapping, JSON utilities, terminal colors, and ID generation.
 
 The project also ships two small tools: `cmd/copyright` (a Go command, stdlib only) and `sh/generate_gowork.sh` (bash).
 
@@ -19,7 +19,7 @@ go/
 ├── sh/           # Shared bash library (submodule)
 ├── bin/          # Helper scripts (setup, copyright-header)
 ├── doc/          # Project documentation (this folder)
-├── go.mod        # Root module (github.com/tcodes0/go)
+├── go.mod        # Root module (github.com/rthomazel/go)
 ├── go.work       # Go workspace including all sub-modules
 └── run           # Self-documenting task runner (./run help)
 ```

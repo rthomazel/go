@@ -9,8 +9,8 @@ import (
 	"reflect"
 	"testing"
 
+	"github.com/rthomazel/go/misc"
 	"github.com/stretchr/testify/require"
-	"github.com/tcodes0/go/misc"
 )
 
 //nolint:funlen // test

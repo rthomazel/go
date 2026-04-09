@@ -9,7 +9,7 @@ import (
 	"net/http"
 	"runtime/debug"
 
-	"github.com/tcodes0/go/logging"
+	"github.com/rthomazel/go/logging"
 )
 
 // a middleware that recovers from panics.

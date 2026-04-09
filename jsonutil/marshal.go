@@ -12,7 +12,7 @@ import (
 	"io"
 	"net/http"
 
-	"github.com/tcodes0/go/misc"
+	"github.com/rthomazel/go/misc"
 )
 
 // marshals data to a reader.

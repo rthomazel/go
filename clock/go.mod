@@ -1,3 +1,3 @@
-module github.com/tcodes0/go/clock
+module github.com/rthomazel/go/clock
 
 go 1.26.1

@@ -67,7 +67,7 @@ jobs:
         uses: guyarb/golang-test-annotations@v0.8.0
         with:
           test-results: ${{ steps.test-pretty.outputs.testOutputJson }}
-          package-name: github.com/tcodes0/go
+          package-name: github.com/rthomazel/go
 
   lint:
     name: lint

@@ -41,7 +41,7 @@ jobs:
 
       - name: Install changelog
         if: github.event.local != true
-        run: go install github.com/tcodes0/go/cmd/t0changelog@latest
+        run: go install github.com/rthomazel/go/cmd/t0changelog@latest
 
       - name: Install changelog (local)
         if: github.event.local == true

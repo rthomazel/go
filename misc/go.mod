@@ -1,4 +1,4 @@
-module github.com/tcodes0/go/misc
+module github.com/rthomazel/go/misc
 
 go 1.26.1
 

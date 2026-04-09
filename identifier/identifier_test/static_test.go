@@ -8,8 +8,8 @@ package identifier_test
 import (
 	"testing"
 
+	"github.com/rthomazel/go/identifier"
 	"github.com/stretchr/testify/require"
-	"github.com/tcodes0/go/identifier"
 )
 
 func TestStaticGenerator_Generate(t *testing.T) {

@@ -6,8 +6,8 @@ github.com/stretchr/testify v1.9.0 h1:HtqpIVDClZ4nwg75+f6Lvsy/wHu+3BoSGCbBAcpTsT
 github.com/stretchr/testify v1.9.0/go.mod h1:r2ic/lqez/lEtzL7wO/rwa5dbSLXVDPFyf8C91i36aY=
 github.com/stretchr/testify v1.11.1 h1:7s2iGBzp5EwR7/aIZr8ao5+dra3wiQyKjjFuvgVKu7U=
 github.com/stretchr/testify v1.11.1/go.mod h1:wZwfW3scLgRK+23gO65QZefKpKQRnfz6sD981Nm4B6U=
-github.com/tcodes0/go/hue v0.2.0 h1:DBvCZ/dzFwGRJtVBCRtxI3bbKt14bwueOFeBbyE2nBw=
-github.com/tcodes0/go/hue v0.2.0/go.mod h1:BurGcKBHhpsjIKgXnd8Mz8l72kBYmWnDeQm4/ycRu7U=
+github.com/rthomazel/go/hue v0.2.0 h1:DBvCZ/dzFwGRJtVBCRtxI3bbKt14bwueOFeBbyE2nBw=
+github.com/rthomazel/go/hue v0.2.0/go.mod h1:BurGcKBHhpsjIKgXnd8Mz8l72kBYmWnDeQm4/ycRu7U=
 golang.org/x/sync v0.7.0 h1:YsImfSBoP9QPYL0xyKJPq0gcaJdG3rInoqxTWbfQu9M=
 golang.org/x/sync v0.7.0/go.mod h1:Czt+wKu1gCyEFDUtn0jG5QVvpJ6rzVqr5aXyt9drQfk=
 golang.org/x/sync v0.20.0 h1:e0PTpb7pjO8GAtTs2dQ6jYa5BWYlMuX047Dco/pItO4=

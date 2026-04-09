@@ -15,7 +15,7 @@ import (
 	"strings"
 	"sync/atomic"
 
-	"github.com/tcodes0/go/hue"
+	"github.com/rthomazel/go/hue"
 )
 
 // logger wraps log.Logger.

@@ -8,9 +8,9 @@ package misc_test
 import (
 	"testing"
 
+	"github.com/rthomazel/go/misc"
 	"github.com/stretchr/testify/mock"
 	"github.com/stretchr/testify/require"
-	"github.com/tcodes0/go/misc"
 )
 
 func TestFieldUpdater_UpdateField(t *testing.T) {

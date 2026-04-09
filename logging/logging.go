@@ -12,7 +12,7 @@ import (
 	"os"
 	"sync/atomic"
 
-	"github.com/tcodes0/go/hue"
+	"github.com/rthomazel/go/hue"
 )
 
 // Setting a level prevents messages with a lower level from being logged.

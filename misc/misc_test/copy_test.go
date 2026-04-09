@@ -9,8 +9,8 @@ import (
 	"fmt"
 	"testing"
 
+	"github.com/rthomazel/go/misc"
 	"github.com/stretchr/testify/require"
-	"github.com/tcodes0/go/misc"
 )
 
 func TestCopyPointed(t *testing.T) {

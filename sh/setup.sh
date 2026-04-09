@@ -57,7 +57,7 @@ exit_show_problems() {
 
 cwd_is_root() {
   local header=$(head -2 <go.mod || true)
-  [[ "$header" =~ module[[:blank:]]github.com/tcodes0/go ]]
+  [[ "$header" =~ module[[:blank:]]github.com/rthomazel/go ]]
 }
 
 usage() {

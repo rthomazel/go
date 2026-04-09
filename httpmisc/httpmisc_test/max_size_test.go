@@ -8,8 +8,8 @@ package httpmisc_test
 import (
 	"testing"
 
+	"github.com/rthomazel/go/httpmisc"
 	"github.com/stretchr/testify/require"
-	"github.com/tcodes0/go/httpmisc"
 )
 
 func TestMaxSizeWrite(t *testing.T) {

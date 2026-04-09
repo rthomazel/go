@@ -1,10 +1,10 @@
-module github.com/tcodes0/go/jsonutil
+module github.com/rthomazel/go/jsonutil
 
 go 1.26.1
 
 require (
 	github.com/stretchr/testify v1.11.1
-	github.com/tcodes0/go/misc v0.1.5
+	github.com/rthomazel/go/misc v0.1.5
 )
 
 require (

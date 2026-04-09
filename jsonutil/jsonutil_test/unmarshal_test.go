@@ -11,8 +11,8 @@ import (
 	"io"
 	"testing"
 
+	"github.com/rthomazel/go/jsonutil"
 	"github.com/stretchr/testify/require"
-	"github.com/tcodes0/go/jsonutil"
 )
 
 func TestUnmarshalReader(t *testing.T) {

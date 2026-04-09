@@ -17,8 +17,8 @@ import (
 	"reflect"
 	"time"
 
-	"github.com/tcodes0/go/logging"
-	"github.com/tcodes0/go/misc"
+	"github.com/rthomazel/go/logging"
+	"github.com/rthomazel/go/misc"
 )
 
 // an http client.

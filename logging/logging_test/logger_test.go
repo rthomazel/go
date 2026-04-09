@@ -13,8 +13,8 @@ import (
 	"regexp"
 	"testing"
 
+	"github.com/rthomazel/go/logging"
 	"github.com/stretchr/testify/require"
-	"github.com/tcodes0/go/logging"
 	"golang.org/x/sync/errgroup"
 )
 

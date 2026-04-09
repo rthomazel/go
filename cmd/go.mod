@@ -1,3 +1,3 @@
-module github.com/tcodes0/go/cmd
+module github.com/rthomazel/go/cmd
 
 go 1.26.1

@@ -86,7 +86,7 @@ words:
   - shfmt
   - stretchr
   - tcodes
-  - tcodes0
+  - rthomazel
   - thom
   - thomazella
   - tparallel

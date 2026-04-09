@@ -28,7 +28,7 @@ EOF
 }
 
 go_mod_init() {
-  local name="$1" changed_files_entry="$1" module="github.com/tcodes0/go/$1" go_ver
+  local name="$1" changed_files_entry="$1" module="github.com/rthomazel/go/$1" go_ver
 
   read -r _ _ go_ver _ < <(go version)
 

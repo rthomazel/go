@@ -1,4 +1,4 @@
-module github.com/tcodes0/go/identifier
+module github.com/rthomazel/go/identifier
 
 go 1.26.1
 

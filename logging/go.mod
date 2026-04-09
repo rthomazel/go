@@ -1,10 +1,10 @@
-module github.com/tcodes0/go/logging
+module github.com/rthomazel/go/logging
 
 go 1.26.1
 
 require (
 	github.com/stretchr/testify v1.11.1
-	github.com/tcodes0/go/hue v0.2.0
+	github.com/rthomazel/go/hue v0.2.0
 	golang.org/x/sync v0.20.0
 )
 
